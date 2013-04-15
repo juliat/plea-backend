@@ -1,7 +1,7 @@
 FactoryGirl.define do
 	factory :channel do
 		is_input true
-		name "touch"
+		name "see"
 	end
 	factory :chart do
 		start_date 2.months.ago

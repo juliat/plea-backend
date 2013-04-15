@@ -10,7 +10,7 @@ class StudentTest < ActiveSupport::TestCase
 	setup do
 		@mark = FactoryGirl.create(:student)
 		@classroom = FactoryGirl.create(:classroom)
-		@student_classroom_assignment = FactoryGirl.create(:assignment, :classroom => @classroom, :student = @mark)
+		@student_classroom_assignment = FactoryGirl.create(:classroom_assignment, :classroom => @classroom, :assignable => @mark)
 	end
 	# provide a teardown method
 	teardown do
