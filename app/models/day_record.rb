@@ -7,4 +7,6 @@ class DayRecord < ActiveRecord::Base
   has_one :phase_line
   has_many :metrics
 
+  # accepts_nested_attributes_for :note, :allow_destroy => true
+
 end

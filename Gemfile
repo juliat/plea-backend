@@ -4,6 +4,7 @@ gem 'rails', '3.2.12'
 
 gem 'simple_form'
 gem 'pg'
+gem 'chronic'
 
 group :development do
   # these are to make developing easier
@@ -13,6 +14,17 @@ group :development do
   gem "rails-erd" # run rake erd
 end
 
+# Gems used only in testing
+group :test do
+    gem 'shoulda'
+    gem 'shoulda-matchers'
+    gem 'factory_girl_rails'
+    gem 'capybara'
+    gem 'nokogiri'
+    gem 'simplecov'
+    gem 'tconsole', '1.1.1'
+    gem 'validates_timeliness'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.

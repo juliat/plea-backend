@@ -1,5 +1,5 @@
 class Slice < ActiveRecord::Base
-  attr_accessible :chart_id, :name, :phase_line_id
+  attr_accessible :name, :phase_line_id
 
   # Relationships
   # ========================================================================
