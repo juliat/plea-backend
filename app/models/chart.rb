@@ -10,4 +10,7 @@ class Chart < ActiveRecord::Base
   # topics and subtopics
   belongs_to :topic
   belongs_to :subtopic
+  # day records
+  has_many :day_records
+  
 end
