@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  topic_id: MyString
+  subtopic_id: MyString
+  student_id: MyString
+  start_date: 2013-04-15
+  end_date: 2013-04-15
+  name: MyString
+
+two:
+  topic_id: MyString
+  subtopic_id: MyString
+  student_id: MyString
+  start_date: 2013-04-15
+  end_date: 2013-04-15
+  name: MyString
