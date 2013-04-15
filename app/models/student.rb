@@ -6,4 +6,11 @@ class Student < ActiveRecord::Base
   has_many :classroom_assignments, :as => :assignable # polymorphic 
   has_many :charts
 
+  # Methods
+  # ========================================================================
+  def current_classroom
+  	# look for assignments for this student
+  	# then find one where the end date is nil
+  end
+
 end

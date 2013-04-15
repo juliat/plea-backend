@@ -20,7 +20,8 @@ FactoryGirl.define do
 	end
 	factory :classroom_assignment do
 		association :classroom
-		association :assignable
+		# by default, assignments are for students
+		association :assignable, :factory => :student
 		start_date 6.months.ago
 		end_date nil
 	end
