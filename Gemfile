@@ -10,6 +10,7 @@ group :development do
   gem 'hirb' # pretty console!
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem "rails-erd" # run rake erd
 end
 
 
