@@ -1,6 +1,6 @@
 PleaBackend::Application.routes.draw do
 
-  match 'student/:id' => 'metric#chart'
+  resources :students
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
