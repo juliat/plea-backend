@@ -1,4 +1,14 @@
 FactoryGirl.define do
+	factory :behavior do
+		association :student
+		name "happy slap"
+		code "HS"
+	end
+	factory :behavior_instance do
+		association :behavior
+		date 1.day.ago
+		time "08:30"
+	end
 	factory :channel do
 		is_input true
 		name "see"

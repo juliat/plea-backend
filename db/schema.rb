@@ -11,7 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130415054310) do
+ActiveRecord::Schema.define(:version => 20130508163824) do
+
+  create_table "behavior_instances", :force => true do |t|
+    t.date     "date"
+    t.string   "time"
+    t.integer  "behavior_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "behaviors", :force => true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.integer  "student_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "channels", :force => true do |t|
     t.boolean  "is_input"
