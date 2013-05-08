@@ -6,7 +6,7 @@ FactoryGirl.define do
 	end
 	factory :behavior_instance do
 		association :behavior
-		date 1.day.ago
+		date 1.day.ago.to_date
 		time "08:30"
 	end
 	factory :channel do

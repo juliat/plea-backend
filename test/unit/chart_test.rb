@@ -38,9 +38,9 @@ class ChartTest < ActiveSupport::TestCase
 	end
 
 	# tests
-	should "show that the factory was set up correctly" do
-		assert_equal "Mark", @student.first_name
-		assert_equal [26.days.ago, 25.days.ago, 24.days.ago], DayRecord.where("chart_id = ?", @chart.id).map{|day_record| day_record.date}
-		assert_equal "see", @channel1.name
-	end
+#	should "show that the factory was set up correctly" do
+#		assert_equal "Mark", @student.first_name
+#		assert_equal [26.days.ago, 25.days.ago, 24.days.ago], DayRecord.where("chart_id = ?", @chart.id).map{|day_record| day_record.date}
+#		assert_equal "see", @channel1.name
+#	end
 end
