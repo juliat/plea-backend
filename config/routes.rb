@@ -5,7 +5,10 @@ PleaBackend::Application.routes.draw do
     match 'logout' => 'devise/sessions#destroy', :as => :logout
   end
 
-  resources :students
+  resources :students do
+    get :behaviors
+  end
+  
   resources :teachers
   resources :charts
 

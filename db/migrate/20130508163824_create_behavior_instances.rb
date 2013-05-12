@@ -4,7 +4,7 @@ class CreateBehaviorInstances < ActiveRecord::Migration
       t.integer :id
       t.date :date
       t.string :time
-      t.integer :behavior_id
+      t.integer :student_behavior_id
       
       t.timestamps
     end

@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512200443) do
+ActiveRecord::Schema.define(:version => 20130512223301) do
 
   create_table "behavior_instances", :force => true do |t|
     t.date     "date"
     t.string   "time"
-    t.integer  "behavior_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "student_behavior_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "behaviors", :force => true do |t|
@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(:version => 20130512200443) do
   end
 
   create_table "charts", :force => true do |t|
-    t.string   "topic_id"
-    t.string   "subtopic_id"
-    t.string   "student_id"
+    t.integer  "topic_id"
+    t.integer  "subtopic_id"
+    t.integer  "student_id"
     t.date     "start_date"
     t.date     "end_date"
     t.string   "name"
@@ -101,10 +101,17 @@ ActiveRecord::Schema.define(:version => 20130512200443) do
 
   create_table "slice", :force => true do |t|
     t.string   "name"
-    t.integer  "chart_id"
     t.integer  "phase_line_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "student_behaviors", :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "behavior_id"
+    t.boolean  "active",      :default => true
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "students", :force => true do |t|

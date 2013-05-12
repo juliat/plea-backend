@@ -11,6 +11,10 @@ class StudentsController < ApplicationController
 		end
 	end
 
+	def behaviors
+		@student = Student.find(params[:student_id])
+	end
+
 	def show
 		@student = Student.all.sample
 		# @chart_data = @student.current_chart

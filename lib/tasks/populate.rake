@@ -13,7 +13,7 @@ namespace :db do
     require 'faker'
     
     # Step 0: clear any old data in the db
-    [Behavior, BehaviorInstance, Chart, ChartChannel, ClassroomAssignment, DayRecord, Metric, Note, PhaseLine, Slice, Student, Subtopic, Teacher, Topic, TopicSubtopic].each(&:delete_all)
+    [Behavior, BehaviorInstance, Chart, ChartChannel, ClassroomAssignment, DayRecord, Metric, Note, PhaseLine, Slice, Student, StudentBehavior, Subtopic, Teacher, Topic, TopicSubtopic].each(&:delete_all)
     
     # Create a few teachers
     30.times do |i|
@@ -127,6 +127,43 @@ namespace :db do
       end
     end
 
+    # Create records and metrics for the charts
+
+    # Create behaviors
+    behaviors = [
+      {'name' => 'biting', 'code' => 'B'},
+      {'name' => 'slapping', 'code' => 'SL'},
+      {'name' => 'shouting', 'code' => 'SH'},
+      {'name' => 'hair pulling', 'code' => 'HP'},
+      {'name' => 'throwing', 'code' => 'TH'}
+    ]
+    behaviors.each do |b|
+      @behavior = Behavior.new
+      @behavior.name = b['name']
+      @behavior.code = b['code']
+      @behavior.save!
+    end
+
+    # associate behaviors with students and create instances of those behaviors
+    Student.all.each do |s|
+      num_behaviors = rand(1..5)
+      num_behaviors.times do |i|
+        @student_behavior = StudentBehavior.new
+        @student_behavior.behavior_id = Behavior.all.sample.id
+        @student_behavior.student_id = s.id
+        @student_behavior.save!
+
+        num_instances = rand(2..25)
+        num_instances.times do |i|
+          @behavior_instance = BehaviorInstance.new
+          days_ago = rand(1..30)
+          @behavior_instance.date = days_ago.days.ago.to_date
+          @behavior_instance.time = BehaviorInstance::TIMES.sample
+          @behavior_instance.student_behavior_id = @student_behavior.id
+          @behavior_instance.save!
+        end
+      end
+    end
 
   end # end task
 end # close namespace

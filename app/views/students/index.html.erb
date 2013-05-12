@@ -1,11 +1,7 @@
 <ul>
 	<% @students.each do |s| %>
 		<li><%= s.first_name %>
-			<ul>
-				<% s.charts.each do |chart| %>
-					<li><%= link_to chart.chart_name, chart_path(chart) %></li>
-				<% end %>
-			</ul> 
+			<%= render :partial => 'charts' %>
 		</li>
 	<% end %>
 </ul>

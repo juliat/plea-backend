@@ -5,6 +5,9 @@ class Student < ActiveRecord::Base
   # ========================================================================
   has_many :classroom_assignments, :as => :assignable # polymorphic 
   has_many :charts
+  has_many :student_behaviors
+  has_many :behaviors, :through => :student_behaviors
+  has_many :behavior_instances, :through => :behaviors
 
   # Scopes
   # ========================================================================

@@ -1,0 +1,5 @@
+<ul>
+	<% charts.each do |chart| %>
+		<li><%= link_to chart.chart_name, chart_path(chart) %></li>
+	<% end %>
+</ul> 

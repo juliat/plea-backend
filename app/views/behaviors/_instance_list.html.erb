@@ -1,0 +1,11 @@
+<ul>
+	<% behaviors.each do |b| %>
+		<li><%= b.name %>
+			<ul>
+				<% b.behavior_instances.each do |bi| %>
+					<li><%= bi.date %> <%= bi.time %></li>
+				<% end %>
+			</ul>
+		</li>
+	<% end %>
+</ul>

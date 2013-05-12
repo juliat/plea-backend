@@ -1,4 +1,4 @@
-class CreateTopicSubtopic < ActiveRecord::Migration
+class CreateTopicSubtopics < ActiveRecord::Migration
   def change
     create_table :topic_subtopics do |t|
       t.integer :topic_id
