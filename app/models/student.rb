@@ -10,7 +10,7 @@ class Student < ActiveRecord::Base
   # ========================================================================
   def current_classroom
   	# look for assignments for this student
-  	# then find one where the end date is nil
+    ClassroomAssignment.current.for_role("student").for_id(self.id)
   end
 
 end

@@ -12,5 +12,10 @@ class Chart < ActiveRecord::Base
   belongs_to :subtopic
   # day records
   has_many :day_records
-  
+
+  # Scopes
+  # ========================================================================
+  scope :current, where("end_date = ?", nil)
+  scope :for_student, lambda{|student_id| where("student_id = ?", student_id.to_s)}
+  scope :alphabetical, order("name ASC, start_date ASC")
 end

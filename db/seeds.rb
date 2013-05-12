@@ -5,3 +5,26 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+input_channels = ['see', 'hear', 'free']
+output_channels = ['point', 'say', 'mark']
+
+input_channels.each do |channel_name|
+	@channel = Channel.new
+	@channel.is_input = true
+	@channel.name = channel_name
+	@channel.save!
+end
+
+output_channels.each do |channel_name|
+	@channel = Channel.new
+	@channel.is_input = false
+	@channel.name = channel_name
+	@channel.save!
+end
+
+6.times do |i|
+	@classroom = Classroom.new
+	@classroom.number = i.to_s
+	@classroom.save!
+end

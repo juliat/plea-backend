@@ -11,7 +11,7 @@ class BehaviorInstanceTest < ActiveSupport::TestCase
 	end
 
 	teardown do
-		@behavior_instance.destroy!
+		@behavior_instance.destroy
 	end
 
 

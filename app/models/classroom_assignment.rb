@@ -7,4 +7,10 @@ class ClassroomAssignment < ActiveRecord::Base
   # make relationship with people (students and teachers) polymorphic
   belongs_to :assignable, :polymorphic => true 
 
+  # Scopes
+  # ========================================================================
+  scope :for_role, lambda{|role_name| where("person_type = ?", role_name)}
+  scope :current, where("end_date = ?", nil)
+  scope :for_id, lambda{|id| where("person_id = ?", id)}
+  
 end

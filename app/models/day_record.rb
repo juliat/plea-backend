@@ -3,6 +3,7 @@ class DayRecord < ActiveRecord::Base
 
   # Relationships
   # ========================================================================
+  belongs_to :chart
   has_one :note, :as => :notable # polymorphic
   has_one :phase_line
   has_many :metrics
