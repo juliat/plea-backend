@@ -18,4 +18,8 @@ class Student < ActiveRecord::Base
     ClassroomAssignment.current.for_role("Student").for_person(self.id).first
   end
 
+  def charts
+    Chart.for_student(self.id)
+  end
+
 end

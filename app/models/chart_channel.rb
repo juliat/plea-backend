@@ -6,4 +6,8 @@ class ChartChannel < ActiveRecord::Base
   belongs_to :chart
   belongs_to :channel
   
+  # Scopes
+  # ========================================================================
+  scope :for_chart, lambda{|chart_id| where('chart_id = ?', chart_id)}
+  
 end

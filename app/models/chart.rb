@@ -18,4 +18,19 @@ class Chart < ActiveRecord::Base
   scope :current, where("end_date = ?", nil)
   scope :for_student, lambda{|student_id| where("student_id = ?", student_id.to_s)}
   scope :alphabetical, order("name ASC, start_date ASC")
+
+  # Methods
+  # ========================================================================
+  def channels
+    ChartChannel.for_chart(self.id).map{|chart_channel| Channel.find(chart_channel.channel_id).name}
+  end
+
+  def chart_name
+    if self.name
+      return self.name
+    else
+      return self.subtopic.name + ' - ' + self.channels.join(' / ')
+    end
+  end
+
 end

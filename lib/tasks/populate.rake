@@ -62,6 +62,71 @@ namespace :db do
       end
     end
 
+    # Create topics and subtopics
+    topics = [
+      {'name' => 'imitation',
+       'subtopics' => ['hand motions', 'facial expressions']
+      },
+      {'name' => 'language',
+       'subtopics' => ['letters', 'phonemes', 'cv blends', '1-5 syllable words', 'safety words', 'categories', 'colors', 'verbs']
+      },
+      {'name' => 'reading',
+       'subtopics' => ['sentences', 'sounding out words']
+      }, 
+      {'name' => 'math',
+       'subtopics' => ['counting', 'addition', 'subtraction']
+      },     
+      {'name' => 'wellness',
+       'subtopics' => ['coordination', 'balance', 'speed']
+      },
+      {'name' => 'writing',
+       'subtopics' => ['drawing letters', 'writing phrases', 'writing sentences']
+      }
+    ]
+    topics.each do |t|
+      @topic = Topic.new
+      @topic.name = t['name']
+      @topic.save!
+
+      t['subtopics'].each do |s|
+        @subtopic = Subtopic.new
+        @subtopic.name = s
+        @subtopic.save!
+
+        @topic_subtopic = TopicSubtopic.new
+        @topic_subtopic.topic_id = @topic.id
+        @topic_subtopic.subtopic_id = @subtopic.id
+        @topic_subtopic.save!
+      end
+    end
+
+    # Create a few charts with channels for each student
+    Student.all.each do |s|
+      num_charts = rand(2..5)
+      num_charts.times do |i|
+        @chart = Chart.new
+        @chart.student_id = s.id
+        @chart.start_date = 4.weeks.ago
+        topic = Topic.all.sample
+        @chart.topic_id = topic.id
+        @chart.subtopic_id = Subtopic.for_topic(topic.id).sample.id
+        @chart.save!
+
+        in_channel = Channel.inputs.sample.id
+        out_channel = Channel.outputs.sample.id
+
+        @chartchannel_in = ChartChannel.new
+        @chartchannel_in.channel_id = in_channel
+        @chartchannel_in.chart_id = @chart.id
+        @chartchannel_in.save!
+
+        @chartchannel_out = ChartChannel.new
+        @chartchannel_out.channel_id = out_channel
+        @chartchannel_out.chart_id = @chart.id
+        @chartchannel_out.save!
+      end
+    end
+
 
   end # end task
 end # close namespace
