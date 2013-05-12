@@ -15,7 +15,7 @@ class Student < ActiveRecord::Base
   # ========================================================================
   def current_classroom
   	# look for assignments for this student
-    ClassroomAssignment.current.for_role("student").for_id(self.id)
+    ClassroomAssignment.current.for_role("Student").for_person(self.id).first
   end
 
 end

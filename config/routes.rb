@@ -1,10 +1,16 @@
 PleaBackend::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users do
+    match 'login' => 'devise/sessions#new', :as => :login
+    match 'logout' => 'devise/sessions#destroy', :as => :logout
+  end
 
   resources :students
+  resources :teachers
 
   root :to => "students#index"
+
+  # match 'login' => 'devise/sessions#new', :as => :new_user_session
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

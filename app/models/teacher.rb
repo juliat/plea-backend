@@ -22,9 +22,7 @@ class Teacher < ActiveRecord::Base
 
   def current_students
   	student_records = ClassroomAssignment.for_role("Student").current.for_classroom(self.current_classroom.classroom_id).all
-  	student_ids = student_records.map{|student_record| student_record.person_id}
-  	students = student_ids.map{|student_id| Student.find(student_id)}
-  	return current_students
+  	students = student_records.map{|student_record| Student.find(student_record.person_id)}
   end
 
 end

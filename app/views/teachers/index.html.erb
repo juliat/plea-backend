@@ -1,0 +1,5 @@
+<ul>
+	<% @teachers.each do |t| %>
+		<li><%= t.first_name %>, <%= t.current_classroom.classroom_number %></li>
+	<% end %>
+</ul>

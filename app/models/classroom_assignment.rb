@@ -13,5 +13,10 @@ class ClassroomAssignment < ActiveRecord::Base
   scope :current, where(:end_date => nil)
   scope :for_person, lambda{|id| where("person_id = ?", id)}
   scope :for_classroom, lambda{|classroom_id| where("classroom_id = ?", classroom_id)}
-  
+
+  # Scopes
+  # ========================================================================
+  def classroom_number
+    Classroom.find(classroom_id).number
+  end
 end

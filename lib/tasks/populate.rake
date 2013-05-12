@@ -24,7 +24,7 @@ namespace :db do
       @teacher.save!
     end
 
-    # Assign the teachers to classrooms
+    # Assign the teachers to classrooms and create a user account for each of them
     Teacher.all.each do |teacher|
       @classroom_assignment = ClassroomAssignment.new
       @classroom_assignment.person_type = "Teacher"
@@ -32,6 +32,14 @@ namespace :db do
       @classroom_assignment.classroom_id = Classroom.all.sample.id
       @classroom_assignment.start_date = 6.months.ago.to_date
       @classroom_assignment.save!
+
+      @user = User.new
+      @user.email = Faker::Internet.email
+      @user.password = "testtest"
+      @user.password_confirmation = "testtest"
+      @user.save!
+      teacher.user_id = @user.id
+      teacher.save!
     end
 
     # Add Students - between 3 and 6 per class

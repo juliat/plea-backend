@@ -35,4 +35,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  def is_admin?
+    return !(self.is_teacher?)
+  end
+  
 end

@@ -1,4 +1,8 @@
 class StudentsController < ApplicationController
+	
+	before_filter :authenticate_user!
+	# load_and_authorize_resource
+
 	def index
 		if current_user.is_teacher?
 			@students = current_user.teacher.current_students
@@ -6,7 +10,7 @@ class StudentsController < ApplicationController
 			@students = Student.all
 		end
 	end
-	
+
 	def show
 		@student = Student.all.sample
 		# @chart_data = @student.current_chart
