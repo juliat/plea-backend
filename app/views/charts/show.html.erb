@@ -1,10 +1,9 @@
 <div id="draw">
 </div>
 <div id="adjustments">
-	<h1>John Smith</h1>
-	<!--<div class="seesay">see/say</div>
-	<div class="colors">colors</div>-->
-	<div class="colors">colors</div>
+	<h1><%= @chart.student.name %></h1>
+	<div><%= @chart.channels.join('/') %></div>
+	<div><%= @chart.subtopic.name %></div>
 		<ul>
     	<li>Corrects</li>
     	<li><img class="subtract" id="sub-correct" width="40" height="40" src="assets/buttons/subtract.png" />

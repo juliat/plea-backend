@@ -1,5 +1,6 @@
 class ChartsController < ApplicationController
 	def show
+		@chart = Chart.find(params[:id])
 		render :layout => "chart_layout"
 	end
 

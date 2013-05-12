@@ -9,5 +9,4 @@ class ChartChannel < ActiveRecord::Base
   # Scopes
   # ========================================================================
   scope :for_chart, lambda{|chart_id| where('chart_id = ?', chart_id)}
-  
 end

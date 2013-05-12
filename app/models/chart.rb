@@ -29,7 +29,7 @@ class Chart < ActiveRecord::Base
     if self.name
       return self.name
     else
-      return self.subtopic.name + ' - ' + self.channels.join(' / ')
+      return self.subtopic.name + ' - ' + self.channels.join('/')
     end
   end
 

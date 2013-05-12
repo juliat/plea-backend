@@ -22,4 +22,8 @@ class Student < ActiveRecord::Base
     Chart.for_student(self.id)
   end
 
+  def name
+    first_name + ' ' + last_name
+  end
+
 end
