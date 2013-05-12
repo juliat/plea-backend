@@ -6,6 +6,11 @@ class Student < ActiveRecord::Base
   has_many :classroom_assignments, :as => :assignable # polymorphic 
   has_many :charts
 
+  # Scopes
+  # ========================================================================
+  scope :for_classroom, lambda{|classroom_number|}
+
+
   # Methods
   # ========================================================================
   def current_classroom

@@ -10,7 +10,8 @@ class ClassroomAssignment < ActiveRecord::Base
   # Scopes
   # ========================================================================
   scope :for_role, lambda{|role_name| where("person_type = ?", role_name)}
-  scope :current, where("end_date = ?", nil)
-  scope :for_id, lambda{|id| where("person_id = ?", id)}
+  scope :current, where(:end_date => nil)
+  scope :for_person, lambda{|id| where("person_id = ?", id)}
+  scope :for_classroom, lambda{|classroom_id| where("classroom_id = ?", classroom_id)}
   
 end

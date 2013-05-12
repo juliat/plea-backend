@@ -6,4 +6,22 @@ class Teacher < ActiveRecord::Base
   # belongs_to :user
   has_many :classroom_assignments, :as => :assignable # polymorphic 
 
+
+  # Methods
+  # ========================================================================
+  def classrooms
+  	ClassroomAssignment.for_role("Teacher").for_person(self.id)
+  end
+
+  def current_classroom
+  	ClassroomAssignment.for_role("Teacher").current.for_person(self.id).first
+  end
+
+  def current_students
+  	student_records = ClassroomAssignment.for_role("Student").current.for_classroom(self.current_classroom.classroom_id).all
+  	student_ids = student_records.map{|student_record| student_record.person_id}
+  	students = student_ids.map{|student_id| Student.find(student_id)}
+  	return current_students
+  end
+
 end

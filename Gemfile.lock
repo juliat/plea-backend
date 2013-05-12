@@ -65,6 +65,8 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    faker (1.1.2)
+      i18n (~> 0.5)
     ffi (1.4.0)
     hike (1.2.2)
     hirb (0.7.1)
@@ -87,6 +89,7 @@ GEM
     nokogiri (1.5.6)
     pg (0.15.1)
     polyglot (0.3.3)
+    populator (1.0.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -178,10 +181,12 @@ DEPENDENCIES
   chronic
   coffee-rails (~> 3.2.1)
   factory_girl_rails
+  faker
   hirb
   jquery-rails
   nokogiri
   pg
+  populator
   rails (= 3.2.12)
   rails-erd
   sass-rails (~> 3.2.3)
