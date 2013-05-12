@@ -3,9 +3,12 @@ class Teacher < ActiveRecord::Base
 
   # Relationships
   # ========================================================================
-  # belongs_to :user
+  belongs_to :user
   has_many :classroom_assignments, :as => :assignable # polymorphic 
 
+  # Scopes
+  # ========================================================================
+  scope :for_user, lambda{|user_id| where("user_id = ?", user_id)}
 
   # Methods
   # ========================================================================
