@@ -6,6 +6,9 @@ gem 'simple_form'
 gem 'pg'
 gem 'chronic'
 
+gem 'devise'
+gem 'cancan'
+
 group :development do
   # these are to make developing easier
   gem 'hirb' # pretty console!
