@@ -12,6 +12,8 @@ class Chart < ActiveRecord::Base
   belongs_to :subtopic
   # day records
   has_many :day_records
+  has_many :day_metrics, :through => :day_records
+  has_many :metrics, :through => :day_metrics
 
   # Scopes
   # ========================================================================

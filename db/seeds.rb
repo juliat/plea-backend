@@ -28,3 +28,15 @@ end
 	@classroom.number = i.to_s
 	@classroom.save!
 end
+
+default_metrics = [{'name' => 'corrects', 'symbol' => 'filled circle'},
+				   {'name' => 'incorrects', 'symbol' => 'x'},
+				   {'name' => 'floor', 'symbol' => 'horizontal line'},
+				   {'name' => 'trials', 'symbol' => 'empty circle'}]
+
+default_metrics.each do |metric|
+	@metric = Metric.new
+	@metric.name = metric['name']
+	@metric.symbol = metric['symbol']
+	@metric.save!
+end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512223301) do
+ActiveRecord::Schema.define(:version => 20130516164201) do
 
   create_table "behavior_instances", :force => true do |t|
     t.date     "date"
@@ -70,8 +70,16 @@ ActiveRecord::Schema.define(:version => 20130512223301) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "day_metrics", :force => true do |t|
+    t.integer  "day_record_id"
+    t.integer  "metric_id"
+    t.integer  "metric_value"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "day_records", :force => true do |t|
-    t.string   "chart_id"
+    t.integer  "chart_id"
     t.date     "date"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -80,10 +88,8 @@ ActiveRecord::Schema.define(:version => 20130512223301) do
   create_table "metrics", :force => true do |t|
     t.string   "name"
     t.string   "symbol"
-    t.integer  "value"
-    t.integer  "day_record_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "notes", :force => true do |t|

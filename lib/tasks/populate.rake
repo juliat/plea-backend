@@ -13,7 +13,7 @@ namespace :db do
     require 'faker'
     
     # Step 0: clear any old data in the db
-    [Behavior, BehaviorInstance, Chart, ChartChannel, ClassroomAssignment, DayRecord, Metric, Note, PhaseLine, Slice, Student, StudentBehavior, Subtopic, Teacher, Topic, TopicSubtopic].each(&:delete_all)
+    [Behavior, BehaviorInstance, Chart, ChartChannel, ClassroomAssignment, DayRecord, DayMetric, Note, PhaseLine, Slice, Student, StudentBehavior, Subtopic, Teacher, Topic, TopicSubtopic].each(&:delete_all)
     
     # Create a few teachers
     30.times do |i|
@@ -100,7 +100,7 @@ namespace :db do
       end
     end
 
-    # Create a few charts with channels for each student
+    # Create a few charts with channels and metrics/data for each student
     Student.all.each do |s|
       num_charts = rand(2..5)
       num_charts.times do |i|
@@ -111,6 +111,48 @@ namespace :db do
         @chart.topic_id = topic.id
         @chart.subtopic_id = Subtopic.for_topic(topic.id).sample.id
         @chart.save!
+
+        # metrics/data
+        end_date = 1.day.ago
+        @chart.start_date.to_date.upto(end_date.to_date) do |day|
+          # no records on the weekend
+          unless (day.saturday? || day.sunday?)        
+            # create day record
+            @day_record = DayRecord.new
+            @day_record.chart_id = @chart.id
+            @day_record.date = day.to_date
+            @day_record.save!
+
+            # retrieve metric model instances (created in db seed file)
+            @corrects = Metric.with_name('corrects').first
+            @incorrects = Metric.with_name('incorrects').first
+            @floor = Metric.with_name('floor').first
+            @trials = Metric.with_name('trials').first
+            metrics = [@corrects, @incorrects, @floor, @trials]
+
+            # assign values to the metrics, creating instances of DayMetric
+            metrics.each do |metric|
+              @day_metric = DayMetric.new
+              @day_metric.day_record_id = @day_record.id
+              @day_metric.metric_id = metric.id
+
+              if (metric.name == 'corrects')
+                @day_metric.metric_value = rand(20..100)
+              elsif (metric.name == 'incorrects')
+                @day_metric.metric_value = rand(1..20)
+              elsif (metric.name == 'floor')
+                @day_metric.metric_value = rand(10..60)
+              elsif (metric.name == 'trials')
+                @day_metric.metric_value = rand(1..10)
+              end
+              
+              @day_metric.save!
+            end # done assigning metric values
+          end # end weekend check conditional
+        end # end day record stuff
+
+
+        # channels
 
         in_channel = Channel.inputs.sample.id
         out_channel = Channel.outputs.sample.id
@@ -161,8 +203,8 @@ namespace :db do
           @behavior_instance.time = BehaviorInstance::TIMES.sample
           @behavior_instance.student_behavior_id = @student_behavior.id
           @behavior_instance.save!
-        end
-      end
+        end # done creating behavior instances
+      end #done creating behaviors
     end
 
   end # end task

@@ -4,7 +4,21 @@
 	<h1><%= @chart.student.name %></h1>
 	<div><%= @chart.channels.join('/') %></div>
 	<div><%= @chart.subtopic.name %></div>
-		<ul>
+    <ul>
+        <% @chart.day_records.each do |day_record| %>
+        <li>day: <%= day_record.date %>
+            <ul>
+                <% day_record.day_metrics.each do |day_metric| %>
+                <li>metric name: <%= day_metric.metric.name %></li>
+                <li>metric value: <%= day_metric.metric_value %></li>
+                <li>metric symbol: <%= day_metric.metric.symbol %></li>
+                <% end %>
+            </ul>
+        </li>
+        <% end %>
+    </ul>
+
+	<ul>
     	<li>Corrects</li>
     	<li><img class="subtract" id="sub-correct" width="40" height="40" src="assets/buttons/subtract.png" />
     		<p id="corrects" class="input"></p>

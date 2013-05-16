@@ -1,7 +1,7 @@
 <ul>
 	<% @students.each do |s| %>
 		<li><%= s.first_name %>
-			<%= render :partial => 'charts' %>
+			<%= render :partial => 'charts', :locals => {:charts => s.charts} %>
 		</li>
 	<% end %>
 </ul>

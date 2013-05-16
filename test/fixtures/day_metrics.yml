@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  day_record_id: 1
+  metric_id: 1
+
+two:
+  day_record_id: 1
+  metric_id: 1

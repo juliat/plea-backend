@@ -1,9 +1,12 @@
 class Metric < ActiveRecord::Base
-  attr_accessible :day_record_id, :name, :symbol, :value
+  attr_accessible :name, :symbol
 
   # Relationships
   # ========================================================================
-  has_one :note, :as => :notable # polymorphic
-  belongs_to :day_record
+  has_many :day_metrics
+  has_many :day_records, :through => :day_metrics
 
+  # Scopes
+  # ========================================================================
+  scope :with_name, lambda{|name| where('name = ?', name)}
 end
