@@ -11,6 +11,8 @@ PleaBackend::Application.routes.draw do
   
   resources :teachers
   resources :charts
+  resources :day_records
+  resources :behaviors
 
   root :to => "students#index"
 

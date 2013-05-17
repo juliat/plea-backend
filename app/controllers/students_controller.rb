@@ -9,6 +9,11 @@ class StudentsController < ApplicationController
 		else
 			@students = Student.all
 		end
+
+		respond_to do |format|
+      		format.html # show.html.erb
+      		format.json { render json: @students.map{ |student| {:id => student.id, :name => student.first_name + ' ' + student.last_name } }}
+      	end
 	end
 
 	def behaviors
@@ -25,7 +30,7 @@ class StudentsController < ApplicationController
 		
 		respond_to do |format|
       		format.html # show.html.erb
-      		format.json { render json: @student }
+      		format.json { render json: @student, :only => [:id, :name]  }
       	end
 	end
 	

@@ -4,7 +4,6 @@ class CreateBehaviors < ActiveRecord::Migration
       t.integer :id
       t.string :code
       t.string :name
-      t.integer :student_id
 
       t.timestamps
     end

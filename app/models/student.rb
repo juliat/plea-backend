@@ -1,5 +1,5 @@
 class Student < ActiveRecord::Base
-  attr_accessible :date_of_birth, :first_name, :last_name
+  attr_accessible :date_of_birth, :first_name, :last_name, :name
 
   # Relationships
   # ========================================================================
@@ -27,6 +27,12 @@ class Student < ActiveRecord::Base
 
   def name
     first_name + ' ' + last_name
+  end
+
+  def name=(name)
+    split = name.split(' ', 2)
+    self.first_name = split.first
+    self.last_name = split.last
   end
 
 end
