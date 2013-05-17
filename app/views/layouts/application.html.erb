@@ -4,14 +4,19 @@
   <title>PLEA app</title>
     <%= csrf_meta_tags %>
 
-	<link rel="stylesheet" type="text/css" href="assets/normalize.css">
-	<link rel="stylesheet" type="text/css" href="assets/app.css">
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic' rel='stylesheet' type='text/css'>
+	<!-- <link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
+	ink rel="stylesheet" type="text/css" href="assets/css/app.css"> -->
+	<%= stylesheet_link_tag("application") %>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript" src="assets/hammer.min.js"></script>
+	<script type="text/javascript" src="assets/js/modernizr.custom.js"></script>
 
 	<!--Stops double tap from zooming and lets multitouch gestures work -->
 	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+
+
 </head>
 <body>
 	<%= render :partial => "partials/top_nav" %>
@@ -19,7 +24,10 @@
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
 
-	<%= yield %>
+	<div class="container row">
+		<%= yield %>
+	</div>
 
+	<script type="text/javascript" src="assets/js/menu.js"></script>
 </body>
 </html>

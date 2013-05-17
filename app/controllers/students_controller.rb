@@ -34,6 +34,15 @@ class StudentsController < ApplicationController
       	end
 	end
 	
+	def create
+	  @student = Article.new(params[:article])
+	  flash[:notice] = @student.save ? "Student was created." : "Student failed to save."
+	  respond_with @student do |format|
+	    format.html { @student.valid? ? redirect_to(@student) : render(:new) }
+	    format.json { render :json => @student }
+	  end
+	end
+
 	def destroy
       @student = Student.find(params[:id])
       @student.destroy

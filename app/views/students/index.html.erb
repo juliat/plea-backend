@@ -1,9 +1,12 @@
-<ul class="students nav-list">
+<nav class="students menu menu-vertical" id="students-menu">
+	<h3>Students</h3>
 	<% @students.each do |s| %>
-		<h3 class="<%= s.first_name.downcase + '-' + s.last_name.downcase %>"><%= s.first_name %></h3>
+		<a class="<%= s.first_name.downcase + '-' + s.last_name.downcase %>"><%= s.first_name %></a>
 	<% end %>
-</ul>
-<div class="students-charts">
+</nav>
+
+<div class="container students-charts">
 	<% @students.each do |s| %>
 		<%= render :partial => 'charts', :locals => {:student => s, :charts => s.charts} %>
 	<% end %>
+</div>

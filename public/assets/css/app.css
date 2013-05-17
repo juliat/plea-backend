@@ -1,25 +1,27 @@
 .notice, .alert {
-	display:none;
+    display:none;
 }
 
 .top_nav {
-    background: #efefef;
-    font-size: 1.1em;
+    background: rgb(37, 37, 37);
     padding: 1em 1em;
+    color: white;
 }
 .top_nav span {
     display: block;
     width: 100%;
+    font-size: 0.9em;
 }
 .user-name {
     text-align: left;
 }
 .date {
     text-align: center;
-    margin-top: -1.5em;
+    margin-top: -1.25em;
 }
 
 /* General Demo Style */
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 
 @font-face {
     font-family: 'fontawesome';
@@ -213,10 +215,10 @@ a:hover {
 
 .menu h3 {
     color: #afdefa;
-    font-size: 1.9em;
-    padding: 20px;
+    font-size: 0.9em;
+    padding: 0.33em 0.5em;
     margin: 0;
-    font-weight: 300;
+    font-weight: 600;
     background: #0d77b6;
 }
 
@@ -236,10 +238,26 @@ a:hover {
     color: #47a3da;
 }
 
+/* Add a triangle to currently open menu item link */
+.menu > .item-open > a:after {
+    top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: transparent;
+    border-top-color: #47a3da;
+    border-width: 10px;
+    left: 50%;
+    margin-left: -10px;
+}
+
 /* Orientation-dependent styles for the content of the menu */
 
 .menu-vertical {
-    width: 20%;
+    width: 25%;
     height: 100%;
     top: 3em;
     z-index: 1000;
@@ -253,11 +271,11 @@ a:hover {
 /* Vertical menu that slides from the left or right */
 
 .menu-left {
-    /* left: -240px; */
+    left: -240px;
 }
 
 .menu-right {
-    right: -220px;
+    right: -240px;
 }
 
 .menu-left.menu-open {
@@ -279,16 +297,6 @@ a:hover {
 }
 
 
-/* students page */
-
-.students.menu.menu-vertical {
-    position: absolute;
-}
-
-.container.students-charts {
-margin-left: 25%;
-width: 75%;
-}
 
 
  /*
