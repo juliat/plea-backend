@@ -13,11 +13,20 @@ class StudentsController < ApplicationController
 
 	def behaviors
 		@student = Student.find(params[:student_id])
+
+		respond_to do |format|
+      		format.html # show.html.erb
+      		format.json { render json: @student }
+      	end
 	end
 
 	def show
-		@student = Student.all.sample
-		# @chart_data = @student.current_chart
+		@student = Student.find(params[:student_id])
+		
+		respond_to do |format|
+      		format.html # show.html.erb
+      		format.json { render json: @student }
+      	end
 	end
 	
 	def destroy

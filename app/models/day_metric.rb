@@ -1,5 +1,5 @@
 class DayMetric < ActiveRecord::Base
-    attr_accessible :day_record_id, :metric_id, :value
+    attr_accessible :day_record_id, :metric_id, :metric_value
 
 	# Relationships
 	# ========================================================================

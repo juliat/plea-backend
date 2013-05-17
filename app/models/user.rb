@@ -38,5 +38,13 @@ class User < ActiveRecord::Base
   def is_admin?
     return !(self.is_teacher?)
   end
+
+  def first_name
+    self.teacher.first_name
+  end
+
+  def classroom_number
+    self.teacher.current_classroom.classroom_number
+  end
   
 end

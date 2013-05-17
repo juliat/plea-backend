@@ -1,0 +1,16 @@
+.top_nav {
+    background: #efefef;
+    font-size: 1.1em;
+    padding: 1em 1em;
+}
+.top_nav span {
+    display: block;
+    width: 100%;
+}
+.user-name {
+    text-align: left;
+}
+.date {
+    text-align: center;
+    margin-top: -1.5em;
+}
