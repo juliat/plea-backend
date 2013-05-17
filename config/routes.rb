@@ -13,6 +13,7 @@ PleaBackend::Application.routes.draw do
   resources :charts
   resources :day_records
   resources :behaviors
+  resources :behavior_instances
 
   root :to => "students#index"
 
