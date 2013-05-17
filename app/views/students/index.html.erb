@@ -1,6 +1,9 @@
-<div>
+<ul class="students nav-list">
 	<% @students.each do |s| %>
-		<h3><%= s.first_name %></h3>
-			<%= render :partial => 'charts', :locals => {:charts => s.charts} %>
+		<h3 class="<%= s.first_name.downcase + '-' + s.last_name.downcase %>"><%= s.first_name %></h3>
 	<% end %>
-</div>
+</ul>
+<div class="students-charts">
+	<% @students.each do |s| %>
+		<%= render :partial => 'charts', :locals => {:student => s, :charts => s.charts} %>
+	<% end %>
