@@ -20,6 +20,7 @@ class ChartsController < ApplicationController
 		respond_with @chart do |format|
 			format.html { @chart.valid? ? redirect_to(@chart) : render(:new) }
 			format.json { render :json => @chart }
+			format.xml  { render :xml => @chart }
 		end    	
 	end
 end

@@ -30,7 +30,7 @@ class StudentsController < ApplicationController
 		
 		respond_to do |format|
       		format.html # show.html.erb
-      		format.json { render json: @student, :only => [:id, :first_name, :last_name]  }
+      		format.json { render json: @student, :only => [:id, :name]  }
       	end
 	end
 	
