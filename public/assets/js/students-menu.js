@@ -8,7 +8,7 @@ function(){
 	});
 	
 	function handleStudentNameClick(clickedElement) {
-
+		clickedElement.
 	}
 	/* reveal the div with all their charts */
 

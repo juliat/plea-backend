@@ -20,6 +20,7 @@ class Chart < ActiveRecord::Base
   scope :current, where("end_date = ?", nil)
   scope :for_student, lambda{|student_id| where("student_id = ?", student_id.to_s)}
   scope :alphabetical, order("name ASC, start_date ASC")
+  scope :metrics, joins(:metric)
 
   # Methods
   # ========================================================================
